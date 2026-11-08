@@ -3,28 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FYR3 Guild</title>
+<title>FYR3 Guilds</title>
 <link rel="icon" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=Exo+2:ital,wght@0,200;0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
 <style>
 :root {
-  --fire-0:#fff8e1;--fire-1:#ffe066;--fire-2:#ffb300;--fire-3:#ff7a00;--fire-4:#ff4500;--fire-5:#cc2200;--fire-6:#8b0000;
-  --dragon-deep:#0d0500;--dragon-belly:#1c0e00;--ash:#120800;--gold:#ffd700;--gold-dim:#b8860b;
-  --border-hot:rgba(255,122,0,0.3);--text-light:#fff0d4;--text-mid:#c49060;--text-dim:#7a4020;
+  --fire-0:#fffdf2;--fire-1:#fff0b3;--fire-2:#ffd700;--fire-3:#f5b400;--fire-4:#c98a00;--fire-5:#805500;--fire-6:#3d2900;
+  --dragon-deep:#03060c;--dragon-belly:#081321;--ash:#050a12;--gold:#ffd700;--gold-dim:#b8860b;
+  --border-hot:rgba(0,140,255,0.3);--text-light:#fff0d4;--text-mid:#9bbbd6;--text-dim:#55728e;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{background:var(--dragon-deep);color:var(--text-light);font-family:'Exo 2',sans-serif;font-weight:300;overflow-x:hidden;cursor:none;}
-#cursor-outer{position:fixed;width:40px;height:40px;border:1px solid rgba(255,122,0,0.6);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width 0.2s,height 0.2s,border-color 0.2s;mix-blend-mode:screen;}
+#cursor-outer{position:fixed;width:40px;height:40px;border:1px solid rgba(0,140,255,0.6);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width 0.2s,height 0.2s,border-color 0.2s;mix-blend-mode:screen;}
 #cursor-inner{position:fixed;width:6px;height:6px;background:var(--fire-3);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);box-shadow:0 0 8px var(--fire-4);}
 body:has(a:hover,button:hover,.clickable:hover) #cursor-outer{width:60px;height:60px;border-color:var(--gold);}
 #fire-canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;}
 body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");background-size:300px;pointer-events:none;z-index:1;opacity:0.7;}
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;background:linear-gradient(180deg,rgba(7,2,0,0.98),rgba(7,2,0,0.7));border-bottom:1px solid var(--border-hot);backdrop-filter:blur(20px);transition:all 0.4s;}
-nav.scrolled{height:58px;border-bottom-color:rgba(255,69,0,0.5);box-shadow:0 4px 60px rgba(255,50,0,0.15);}
-.nav-logo{font-family:'Cinzel Decorative',serif;font-size:1.5rem;font-weight:900;background:linear-gradient(90deg,var(--fire-1),var(--fire-3),var(--fire-4));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none;filter:drop-shadow(0 0 15px rgba(255,122,0,0.6));animation:logoFlicker 3s ease-in-out infinite;}
-@keyframes logoFlicker{0%,100%{filter:drop-shadow(0 0 15px rgba(255,122,0,0.6));}50%{filter:drop-shadow(0 0 25px rgba(255,50,0,0.9));}}
+nav.scrolled{height:58px;border-bottom-color:rgba(0,80,255,0.5);box-shadow:0 4px 60px rgba(0,70,220,0.15);}
+.nav-logo{font-family:'Cinzel Decorative',serif;font-size:1.5rem;font-weight:900;background:linear-gradient(90deg,var(--fire-1),var(--fire-3),var(--fire-4));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none;filter:drop-shadow(0 0 15px rgba(0,140,255,0.6));animation:logoFlicker 3s ease-in-out infinite;}
+@keyframes logoFlicker{0%,100%{filter:drop-shadow(0 0 15px rgba(0,140,255,0.6));}50%{filter:drop-shadow(0 0 25px rgba(0,70,220,0.9));}}
 .nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center;}
 .nav-links a{font-family:'Cinzel',serif;font-size:0.65rem;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:var(--text-mid);text-decoration:none;position:relative;transition:color 0.3s;padding-bottom:2px;}
 .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--fire-4),var(--gold));transform:scaleX(0);transition:transform 0.3s;}
@@ -34,39 +34,39 @@ nav.scrolled{height:58px;border-bottom-color:rgba(255,69,0,0.5);box-shadow:0 4px
 .nav-cta{font-family:'Cinzel',serif;font-size:0.62rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;padding:0.55rem 1.5rem;background:linear-gradient(135deg,var(--fire-4),var(--fire-3));color:#fff;border:none;cursor:none;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);text-decoration:none;transition:all 0.3s;display:inline-block;position:relative;overflow:hidden;}
 .nav-cta::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--gold),var(--fire-3));opacity:0;transition:opacity 0.3s;}
 .nav-cta:hover::before{opacity:1;}
-.nav-cta:hover{box-shadow:0 0 30px rgba(255,122,0,0.7);transform:translateY(-1px);}
+.nav-cta:hover{box-shadow:0 0 30px rgba(0,140,255,0.7);transform:translateY(-1px);}
 .nav-cta span{position:relative;z-index:1;}
 .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:140px 2rem 100px;z-index:2;overflow:hidden;}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 100%,rgba(255,50,0,0.2) 0%,transparent 65%),radial-gradient(ellipse 50% 40% at 20% 50%,rgba(255,100,0,0.07) 0%,transparent 60%),linear-gradient(180deg,#050200 0%,#100500 50%,#1a0800 100%);}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 100%,rgba(0,70,220,0.2) 0%,transparent 65%),radial-gradient(ellipse 50% 40% at 20% 50%,rgba(0,160,255,0.07) 0%,transparent 60%),linear-gradient(180deg,#050200 0%,#100500 50%,#1a0800 100%);}
 .hero-dragon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:0.07;}
 .hero-dragon svg{width:900px;max-width:90vw;}
 .hero-rings{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;}
 .ring{position:absolute;border-radius:50%;border:1px solid;transform:translate(-50%,-50%);}
-.ring-1{width:500px;height:500px;border-color:rgba(255,100,0,0.06);animation:spin 35s linear infinite;}
-.ring-2{width:700px;height:700px;border-color:rgba(255,60,0,0.04);animation:spin 50s linear infinite reverse;}
-.ring-3{width:900px;height:900px;border-color:rgba(255,30,0,0.03);border-style:dashed;animation:spin 70s linear infinite;}
-.ring-4{width:300px;height:300px;border-color:rgba(255,179,0,0.08);animation:spin 20s linear infinite;}
+.ring-1{width:500px;height:500px;border-color:rgba(0,160,255,0.06);animation:spin 35s linear infinite;}
+.ring-2{width:700px;height:700px;border-color:rgba(0,100,240,0.04);animation:spin 50s linear infinite reverse;}
+.ring-3{width:900px;height:900px;border-color:rgba(0,50,180,0.03);border-style:dashed;animation:spin 70s linear infinite;}
+.ring-4{width:300px;height:300px;border-color:rgba(0,190,255,0.08);animation:spin 20s linear infinite;}
 @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg);}}
 @keyframes logoFloat{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-14px) scale(1.02);}}
-.hero-season-badge{display:inline-flex;align-items:center;gap:0.6rem;font-family:'Cinzel',serif;font-size:0.6rem;font-weight:600;letter-spacing:0.35em;text-transform:uppercase;color:var(--fire-2);border:1px solid rgba(255,179,0,0.25);padding:0.4rem 1.4rem;clip-path:polygon(7px 0%,100% 0%,calc(100% - 7px) 100%,0% 100%);background:rgba(255,122,0,0.06);margin-bottom:1.2rem;opacity:0;animation:fadeUp 0.8s ease 0.3s forwards;position:relative;z-index:3;}
+.hero-season-badge{display:inline-flex;align-items:center;gap:0.6rem;font-family:'Cinzel',serif;font-size:0.6rem;font-weight:600;letter-spacing:0.35em;text-transform:uppercase;color:var(--fire-2);border:1px solid rgba(0,190,255,0.25);padding:0.4rem 1.4rem;clip-path:polygon(7px 0%,100% 0%,calc(100% - 7px) 100%,0% 100%);background:rgba(0,140,255,0.06);margin-bottom:1.2rem;opacity:0;animation:fadeUp 0.8s ease 0.3s forwards;position:relative;z-index:3;}
 .season-dot{width:6px;height:6px;border-radius:50%;background:var(--fire-3);animation:pulse 2s ease-in-out infinite;box-shadow:0 0 8px var(--fire-3);}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.6;transform:scale(0.7);}}
-.hero-title{font-family:'Cinzel Decorative',serif;font-size:clamp(4rem,11vw,9rem);font-weight:900;line-height:0.85;background:linear-gradient(160deg,var(--fire-0) 0%,var(--fire-1) 20%,var(--fire-2) 40%,var(--fire-4) 70%,var(--fire-5) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 50px rgba(255,50,0,0.35));opacity:0;animation:fadeUp 1s ease 0.5s forwards;position:relative;z-index:3;}
+.hero-title{font-family:'Cinzel',serif;font-size:clamp(4.5rem,12vw,9.5rem);font-weight:600;letter-spacing:0.04em;line-height:0.95;color:#f1d184;background:linear-gradient(180deg,#fff6d7 0%,#ffe9a0 24%,#e8bd62 52%,#c28b38 75%,#f7df9a 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;-webkit-text-stroke:0;text-shadow:none;filter:drop-shadow(0 2px 0 #a8752b) drop-shadow(0 4px 0 #80531c) drop-shadow(0 6px 0 #8b2d0c) drop-shadow(0 9px 8px rgba(0,0,0,.75));opacity:0;animation:fadeUp 1s ease 0.5s forwards;position:relative;z-index:3;}
 .hero-sub{font-family:'Cinzel',serif;font-size:clamp(0.6rem,1.5vw,0.85rem);font-weight:400;letter-spacing:0.4em;text-transform:uppercase;color:var(--text-mid);margin-top:1rem;margin-bottom:2.5rem;opacity:0;animation:fadeUp 0.9s ease 0.7s forwards;position:relative;z-index:3;}
 .hero-badges{display:flex;gap:0.8rem;flex-wrap:wrap;justify-content:center;margin-bottom:3.5rem;opacity:0;animation:fadeUp 0.9s ease 0.9s forwards;position:relative;z-index:3;}
 .badge{font-family:'Cinzel',serif;font-size:0.58rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;padding:0.38rem 1rem;border:1px solid;clip-path:polygon(5px 0%,100% 0%,calc(100% - 5px) 100%,0% 100%);}
-.b-gold{color:var(--fire-1);border-color:rgba(255,215,0,0.3);background:rgba(255,179,0,0.07);}
-.b-red{color:var(--fire-4);border-color:rgba(255,69,0,0.3);background:rgba(255,50,0,0.07);}
-.b-white{color:var(--text-light);border-color:rgba(255,240,212,0.2);background:rgba(255,240,212,0.04);}
+.b-gold{color:var(--fire-1);border-color:rgba(255,215,0,0.3);background:rgba(0,190,255,0.07);}
+.b-red{color:var(--fire-4);border-color:rgba(0,80,255,0.3);background:rgba(0,70,220,0.07);}
+.b-white{color:var(--text-light);border-color:rgba(237,246,255,0.2);background:rgba(237,246,255,0.04);}
 .hero-ctas{display:flex;gap:1.2rem;flex-wrap:wrap;justify-content:center;opacity:0;animation:fadeUp 0.9s ease 1.1s forwards;position:relative;z-index:3;}
 .btn-primary,.btn-secondary{font-family:'Cinzel',serif;font-size:0.68rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;padding:1rem 2.5rem;cursor:none;clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);transition:all 0.3s;text-decoration:none;display:inline-block;position:relative;overflow:hidden;}
 .btn-primary{background:linear-gradient(135deg,var(--fire-4),var(--fire-3));color:#fff;border:none;}
 .btn-primary::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--gold),var(--fire-3));opacity:0;transition:opacity 0.3s;}
 .btn-primary:hover::before{opacity:1;}
-.btn-primary:hover{box-shadow:0 0 50px rgba(255,100,0,0.8),0 0 100px rgba(255,50,0,0.3);transform:translateY(-3px);}
+.btn-primary:hover{box-shadow:0 0 50px rgba(0,160,255,0.8),0 0 100px rgba(0,70,220,0.3);transform:translateY(-3px);}
 .btn-primary span{position:relative;z-index:1;}
-.btn-secondary{background:transparent;color:var(--fire-2);border:1px solid rgba(255,179,0,0.35);}
-.btn-secondary:hover{background:rgba(255,179,0,0.08);border-color:var(--gold);box-shadow:0 0 30px rgba(255,179,0,0.25);transform:translateY(-3px);}
+.btn-secondary{background:transparent;color:var(--fire-2);border:1px solid rgba(0,190,255,0.35);}
+.btn-secondary:hover{background:rgba(0,190,255,0.08);border-color:var(--gold);box-shadow:0 0 30px rgba(0,190,255,0.25);transform:translateY(-3px);}
 .scroll-cue{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.5rem;opacity:0.35;animation:bobDown 2.5s ease-in-out infinite;}
 .scroll-cue span{font-family:'Cinzel',serif;font-size:0.5rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--text-mid);}
 .scroll-line{width:1px;height:60px;background:linear-gradient(180deg,var(--fire-2),transparent);}
@@ -79,7 +79,7 @@ nav.scrolled{height:58px;border-bottom-color:rgba(255,69,0,0.5);box-shadow:0 4px
 .stat-block{flex:1;text-align:center;padding:0 2rem;position:relative;opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease;}
 .stat-block.vis{opacity:1;transform:translateY(0);}
 .stat-block+.stat-block::before{content:'';position:absolute;left:0;top:10%;bottom:10%;width:1px;background:linear-gradient(180deg,transparent,var(--border-hot),transparent);}
-.stat-num{font-family:'Cinzel Decorative',serif;font-size:2.6rem;font-weight:700;background:linear-gradient(135deg,var(--fire-1),var(--fire-3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:0.4rem;filter:drop-shadow(0 0 20px rgba(255,122,0,0.5));}
+.stat-num{font-family:'Cinzel Decorative',serif;font-size:2.6rem;font-weight:700;background:linear-gradient(135deg,var(--fire-1),var(--fire-3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:0.4rem;filter:drop-shadow(0 0 20px rgba(0,140,255,0.5));}
 .stat-label{font-family:'Cinzel',serif;font-size:0.58rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-dim);}
 section{position:relative;z-index:2;}
 .inner{max-width:1200px;margin:0 auto;padding:0 5vw;}
@@ -89,24 +89,24 @@ section{position:relative;z-index:2;}
 .divider.centered{margin:0 auto 2rem;}
 .mission{padding:9rem 0;}
 .mission-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
-.mission-text p{line-height:1.85;color:rgba(255,240,212,0.7);font-size:0.95rem;margin-bottom:1.2rem;}
+.mission-text p{line-height:1.85;color:rgba(237,246,255,0.7);font-size:0.95rem;margin-bottom:1.2rem;}
 .mission-text p strong{color:var(--fire-2);}
 .mission-quote{font-family:'Cinzel',serif;font-size:0.8rem;letter-spacing:0.1em;color:var(--fire-2);margin-top:1.8rem;border-top:1px solid var(--border-hot);padding-top:1.2rem;font-style:italic;}
 .mission-cards{display:flex;flex-direction:column;gap:1.2rem;}
-.mission-card{padding:1.6rem;background:rgba(255,50,0,0.04);border:1px solid var(--border-hot);border-left:3px solid var(--fire-4);clip-path:polygon(0 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%);opacity:0;transform:translateX(40px);transition:opacity 0.5s ease,transform 0.5s ease,background 0.3s,box-shadow 0.3s;}
+.mission-card{padding:1.6rem;background:rgba(0,70,220,0.04);border:1px solid var(--border-hot);border-left:3px solid var(--fire-4);clip-path:polygon(0 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%);opacity:0;transform:translateX(40px);transition:opacity 0.5s ease,transform 0.5s ease,background 0.3s,box-shadow 0.3s;}
 .mission-card.vis{opacity:1;transform:translateX(0);}
-.mission-card:hover{background:rgba(255,50,0,0.09);box-shadow:-3px 0 25px rgba(255,50,0,0.25);}
+.mission-card:hover{background:rgba(0,70,220,0.09);box-shadow:-3px 0 25px rgba(0,70,220,0.25);}
 .mc-tag{font-family:'Cinzel',serif;font-size:0.52rem;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--fire-2);margin-bottom:0.5rem;}
 .mc-name{font-family:'Cinzel Decorative',serif;font-size:1.15rem;font-weight:700;color:var(--text-light);margin-bottom:0.4rem;}
 .mc-desc{font-size:0.85rem;color:var(--text-mid);line-height:1.65;}
 .mc-desc strong{color:var(--text-light);}
-.rank-badge{display:inline-flex;align-items:center;gap:0.5rem;font-family:'Cinzel Decorative',serif;font-size:1.4rem;font-weight:700;background:linear-gradient(135deg,var(--fire-1),var(--fire-4));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 12px rgba(255,122,0,0.5));margin-top:0.5rem;}
+.rank-badge{display:inline-flex;align-items:center;gap:0.5rem;font-family:'Cinzel Decorative',serif;font-size:1.4rem;font-weight:700;background:linear-gradient(135deg,var(--fire-1),var(--fire-4));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 12px rgba(0,140,255,0.5));margin-top:0.5rem;}
 .leadership{padding:9rem 0;background:linear-gradient(180deg,transparent,rgba(12,5,0,0.5),transparent);}
 .lead-header{text-align:center;margin-bottom:5rem;}
 .lead-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.4rem;}
-.lead-card{position:relative;padding:1.8rem 1.5rem;background:rgba(255,50,0,0.03);border:1px solid rgba(255,100,0,0.12);clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px));opacity:0;transform:translateY(28px);transition:opacity 0.5s ease,transform 0.5s ease,background 0.3s,box-shadow 0.3s;}
+.lead-card{position:relative;padding:1.8rem 1.5rem;background:rgba(0,70,220,0.03);border:1px solid rgba(0,160,255,0.12);clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px));opacity:0;transform:translateY(28px);transition:opacity 0.5s ease,transform 0.5s ease,background 0.3s,box-shadow 0.3s;}
 .lead-card.vis{opacity:1;transform:translateY(0);}
-.lead-card:hover{background:rgba(255,50,0,0.09);border-color:rgba(255,122,0,0.35);box-shadow:0 0 40px rgba(255,50,0,0.12);transform:translateY(-4px) !important;}
+.lead-card:hover{background:rgba(0,70,220,0.09);border-color:rgba(0,140,255,0.35);box-shadow:0 0 40px rgba(0,70,220,0.12);transform:translateY(-4px) !important;}
 .lead-card::before{content:'';position:absolute;top:0;right:16px;width:1px;height:16px;background:var(--fire-2);transform-origin:top;transform:rotate(45deg) scaleX(2.5);pointer-events:none;}
 .lead-role-badge{font-family:'Cinzel',serif;font-size:0.48rem;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;display:flex;align-items:center;gap:0.4rem;margin-bottom:0.9rem;}
 .role-leader{color:#ffd700;}
@@ -117,18 +117,18 @@ section{position:relative;z-index:2;}
 .role-specialist{color:#7fffb0;}
 .lead-name{font-family:'Cinzel',serif;font-size:1rem;font-weight:700;color:var(--text-light);letter-spacing:0.05em;margin-bottom:0.5rem;}
 .lead-handle{font-size:0.72rem;color:var(--text-dim);font-family:'Exo 2',sans-serif;font-weight:400;margin-bottom:0.7rem;}
-.lead-duties{list-style:none;font-size:0.75rem;color:rgba(255,240,212,0.55);line-height:1.9;}
+.lead-duties{list-style:none;font-size:0.75rem;color:rgba(237,246,255,0.55);line-height:1.9;}
 .lead-duties li::before{content:'▸ ';color:var(--fire-4);font-size:0.65rem;}
 .lead-card.captains{grid-column:1 / -1;}
 .captains-inner{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:0.8rem;margin-top:1rem;}
-.captain-chip{padding:0.6rem 0.8rem;background:rgba(255,100,0,0.05);border:1px solid rgba(255,100,0,0.15);clip-path:polygon(5px 0%,100% 0%,calc(100% - 5px) 100%,0% 100%);font-family:'Cinzel',serif;font-size:0.65rem;font-weight:600;color:var(--text-mid);text-align:center;transition:all 0.2s;}
-.captain-chip:hover{background:rgba(255,100,0,0.1);color:var(--fire-2);border-color:rgba(255,100,0,0.3);}
+.captain-chip{padding:0.6rem 0.8rem;background:rgba(0,160,255,0.05);border:1px solid rgba(0,160,255,0.15);clip-path:polygon(5px 0%,100% 0%,calc(100% - 5px) 100%,0% 100%);font-family:'Cinzel',serif;font-size:0.65rem;font-weight:600;color:var(--text-mid);text-align:center;transition:all 0.2s;}
+.captain-chip:hover{background:rgba(0,160,255,0.1);color:var(--fire-2);border-color:rgba(0,160,255,0.3);}
 
 /* ══════════════════════════════════════════════
    MASTERCLASS GALLERY
 ══════════════════════════════════════════════ */
 .gallery{padding:10rem 0;position:relative;overflow:hidden;}
-.gallery::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 100% 60% at 50% 0%,rgba(255,50,0,0.08),transparent 60%),radial-gradient(ellipse 80% 40% at 50% 100%,rgba(255,100,0,0.05),transparent 60%);pointer-events:none;}
+.gallery::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 100% 60% at 50% 0%,rgba(0,70,220,0.08),transparent 60%),radial-gradient(ellipse 80% 40% at 50% 100%,rgba(0,160,255,0.05),transparent 60%);pointer-events:none;}
 .gallery-header{text-align:center;margin-bottom:5rem;position:relative;z-index:3;}
 .gallery-header .sec-label{margin-bottom:1rem;}
 
@@ -160,13 +160,13 @@ section{position:relative;z-index:2;}
   content: '';
   position: absolute;
   inset: 0;
-  border: 1px solid rgba(255,122,0,0.25);
+  border: 1px solid rgba(0,140,255,0.25);
   clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px));
   z-index: 3;
   pointer-events: none;
   transition: border-color 0.4s;
 }
-.gallery-hero-slot:hover::after { border-color: rgba(255,179,0,0.6); }
+.gallery-hero-slot:hover::after { border-color: rgba(0,190,255,0.6); }
 .gallery-hero-bg {
   position: absolute;
   inset: 0;
@@ -210,7 +210,7 @@ section{position:relative;z-index:2;}
   text-transform: uppercase;
   color: var(--fire-2);
   background: rgba(0,0,0,0.6);
-  border: 1px solid rgba(255,122,0,0.3);
+  border: 1px solid rgba(0,140,255,0.3);
   padding: 0.3rem 0.8rem;
   clip-path: polygon(5px 0%,100% 0%,calc(100% - 5px) 100%,0% 100%);
   margin-bottom: 0.7rem;
@@ -223,7 +223,7 @@ section{position:relative;z-index:2;}
   background: linear-gradient(135deg, var(--fire-0), var(--fire-1), var(--fire-2));
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   background-clip: text;
-  filter: drop-shadow(0 2px 20px rgba(255,50,0,0.6));
+  filter: drop-shadow(0 2px 20px rgba(0,70,220,0.6));
   line-height: 1.15;
   margin-bottom: 0.6rem;
 }
@@ -231,7 +231,7 @@ section{position:relative;z-index:2;}
   font-family: 'Cinzel', serif;
   font-size: 0.68rem;
   letter-spacing: 0.12em;
-  color: rgba(255,240,212,0.7);
+  color: rgba(237,246,255,0.7);
   max-width: 500px;
   line-height: 1.7;
 }
@@ -258,11 +258,11 @@ section{position:relative;z-index:2;}
   cursor: default;
 }
 .chip-gold { color: var(--gold); border-color: rgba(255,215,0,0.35); }
-.chip-fire { color: var(--fire-2); border-color: rgba(255,122,0,0.35); }
+.chip-fire { color: var(--fire-2); border-color: rgba(0,140,255,0.35); }
 .chip-blue { color: #00bfff; border-color: rgba(0,191,255,0.3); }
 .chip-green { color: #7fffb0; border-color: rgba(127,255,176,0.3); }
 .chip-purple { color: #c4b5ff; border-color: rgba(196,181,255,0.3); }
-.member-chip:hover { background: rgba(255,50,0,0.2); transform: translateY(-2px); }
+.member-chip:hover { background: rgba(0,70,220,0.2); transform: translateY(-2px); }
 
 .gallery-corner-badge {
   position: absolute;
@@ -293,7 +293,7 @@ section{position:relative;z-index:2;}
   background: rgba(0,0,0,0.7);
   padding: 0.2rem 0.6rem;
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,122,0,0.2);
+  border: 1px solid rgba(0,140,255,0.2);
   clip-path: polygon(5px 0%,100% 0%,calc(100% - 5px) 100%,0% 100%);
 }
 
@@ -308,7 +308,7 @@ section{position:relative;z-index:2;}
   overflow: hidden;
   cursor: none;
   clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
-  border: 1px solid rgba(255,100,0,0.15);
+  border: 1px solid rgba(0,160,255,0.15);
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 .gallery-thumb::before {
@@ -321,8 +321,8 @@ section{position:relative;z-index:2;}
   transition: background 0.4s;
 }
 .gallery-thumb:hover {
-  border-color: rgba(255,179,0,0.45);
-  box-shadow: 0 0 40px rgba(255,100,0,0.2), 0 0 80px rgba(255,50,0,0.1);
+  border-color: rgba(0,190,255,0.45);
+  box-shadow: 0 0 40px rgba(0,160,255,0.2), 0 0 80px rgba(0,70,220,0.1);
 }
 .gallery-thumb:hover::before {
   background: linear-gradient(180deg, transparent 20%, rgba(5,2,0,0.85) 100%);
@@ -379,7 +379,7 @@ section{position:relative;z-index:2;}
   letter-spacing: 0.1em;
   padding: 0.18rem 0.45rem;
   background: rgba(0,0,0,0.7);
-  border: 1px solid rgba(255,122,0,0.25);
+  border: 1px solid rgba(0,140,255,0.25);
   color: var(--fire-1);
   clip-path: polygon(3px 0%,100% 0%,calc(100% - 3px) 100%,0% 100%);
 }
@@ -392,13 +392,13 @@ section{position:relative;z-index:2;}
 }
 .g-dot {
   width: 28px; height: 3px;
-  background: rgba(255,100,0,0.2);
+  background: rgba(0,160,255,0.2);
   border: none;
   cursor: none;
   transition: all 0.3s;
   clip-path: polygon(2px 0%,100% 0%,calc(100% - 2px) 100%,0% 100%);
 }
-.g-dot.active { background: var(--fire-3); width: 48px; box-shadow: 0 0 10px rgba(255,100,0,0.5); }
+.g-dot.active { background: var(--fire-3); width: 48px; box-shadow: 0 0 10px rgba(0,160,255,0.5); }
 .g-dot:hover { background: var(--fire-2); }
 
 .gallery-stat-row {
@@ -414,13 +414,13 @@ section{position:relative;z-index:2;}
   align-items: center;
   gap: 0.3rem;
   padding: 1rem 2rem;
-  background: rgba(255,50,0,0.04);
+  background: rgba(0,70,220,0.04);
   border: 1px solid var(--border-hot);
   clip-path: polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
   transition: background 0.3s, box-shadow 0.3s;
 }
-.g-stat:hover { background: rgba(255,50,0,0.09); box-shadow: 0 0 30px rgba(255,50,0,0.15); }
-.g-stat-num { font-family: 'Cinzel Decorative', serif; font-size: 1.6rem; font-weight: 700; background: linear-gradient(135deg,var(--fire-1),var(--fire-3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 12px rgba(255,122,0,0.4)); }
+.g-stat:hover { background: rgba(0,70,220,0.09); box-shadow: 0 0 30px rgba(0,70,220,0.15); }
+.g-stat-num { font-family: 'Cinzel Decorative', serif; font-size: 1.6rem; font-weight: 700; background: linear-gradient(135deg,var(--fire-1),var(--fire-3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 12px rgba(0,140,255,0.4)); }
 .g-stat-label { font-family: 'Cinzel', serif; font-size: 0.52rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-dim); }
 
 .gallery-scan-line {
@@ -464,7 +464,7 @@ section{position:relative;z-index:2;}
   max-height: 80vh;
   object-fit: contain;
   clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px));
-  border: 1px solid rgba(255,122,0,0.3);
+  border: 1px solid rgba(0,140,255,0.3);
   filter: brightness(0.95);
 }
 .fs-close {
@@ -495,14 +495,14 @@ section{position:relative;z-index:2;}
   font-weight: 700;
   letter-spacing: 0.2em;
   padding: 0.6rem 1.4rem;
-  background: rgba(255,50,0,0.07);
+  background: rgba(0,70,220,0.07);
   border: 1px solid var(--border-hot);
   color: var(--fire-3);
   cursor: none;
   transition: all 0.2s;
   clip-path: polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);
 }
-.fs-btn:hover { background: rgba(255,50,0,0.15); border-color: var(--fire-2); }
+.fs-btn:hover { background: rgba(0,70,220,0.15); border-color: var(--fire-2); }
 .fs-caption {
   text-align: center;
   margin-top: 1rem;
@@ -516,42 +516,42 @@ section{position:relative;z-index:2;}
 .accolades{padding:9rem 0;background:linear-gradient(180deg,transparent,rgba(18,8,0,0.6),transparent);}
 .accolades-header{text-align:center;margin-bottom:4rem;}
 .acc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
-.acc-card{padding:2.2rem 1.8rem;background:linear-gradient(135deg,rgba(255,50,0,0.06),rgba(255,100,0,0.02));border:1px solid var(--border-hot);text-align:center;clip-path:polygon(0 0,100% 0,100% calc(100% - 15px),calc(100% - 15px) 100%,0 100%);opacity:0;transform:scale(0.93);transition:opacity 0.6s ease,transform 0.6s ease,background 0.3s,box-shadow 0.3s;}
+.acc-card{padding:2.2rem 1.8rem;background:linear-gradient(135deg,rgba(0,70,220,0.06),rgba(0,160,255,0.02));border:1px solid var(--border-hot);text-align:center;clip-path:polygon(0 0,100% 0,100% calc(100% - 15px),calc(100% - 15px) 100%,0 100%);opacity:0;transform:scale(0.93);transition:opacity 0.6s ease,transform 0.6s ease,background 0.3s,box-shadow 0.3s;}
 .acc-card.vis{opacity:1;transform:scale(1);}
-.acc-card:hover{background:linear-gradient(135deg,rgba(255,50,0,0.12),rgba(255,100,0,0.05));box-shadow:0 0 50px rgba(255,50,0,0.18);transform:scale(1.03) !important;}
+.acc-card:hover{background:linear-gradient(135deg,rgba(0,70,220,0.12),rgba(0,160,255,0.05));box-shadow:0 0 50px rgba(0,70,220,0.18);transform:scale(1.03) !important;}
 .acc-icon{font-size:2.5rem;margin-bottom:1.1rem;display:block;animation:glowPulse 3s ease-in-out infinite;}
-@keyframes glowPulse{0%,100%{filter:drop-shadow(0 0 8px rgba(255,122,0,0.4));}50%{filter:drop-shadow(0 0 22px rgba(255,50,0,0.9));}}
+@keyframes glowPulse{0%,100%{filter:drop-shadow(0 0 8px rgba(0,140,255,0.4));}50%{filter:drop-shadow(0 0 22px rgba(0,70,220,0.9));}}
 .acc-title{font-family:'Cinzel',serif;font-size:0.72rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--fire-2);margin-bottom:0.6rem;}
 .acc-desc{font-size:0.8rem;color:var(--text-mid);line-height:1.65;}
 .requirements{padding:9rem 0;}
 .req-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;}
 .req-col-title{font-family:'Cinzel Decorative',serif;font-size:1.35rem;font-weight:700;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid var(--border-hot);display:flex;align-items:center;gap:0.8rem;}
 .req-list{list-style:none;display:flex;flex-direction:column;gap:0.75rem;}
-.req-list li{display:flex;align-items:flex-start;gap:0.8rem;font-size:0.86rem;line-height:1.6;color:rgba(255,240,212,0.7);padding:0.75rem 1rem;background:rgba(255,50,0,0.03);border:1px solid rgba(255,100,0,0.08);border-left:2px solid rgba(255,69,0,0.35);clip-path:polygon(0 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%);opacity:0;transform:translateX(-22px);transition:opacity 0.4s ease,transform 0.4s ease;}
+.req-list li{display:flex;align-items:flex-start;gap:0.8rem;font-size:0.86rem;line-height:1.6;color:rgba(237,246,255,0.7);padding:0.75rem 1rem;background:rgba(0,70,220,0.03);border:1px solid rgba(0,160,255,0.08);border-left:2px solid rgba(0,80,255,0.35);clip-path:polygon(0 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%);opacity:0;transform:translateX(-22px);transition:opacity 0.4s ease,transform 0.4s ease;}
 .req-list li.vis{opacity:1;transform:translateX(0);}
 .req-list li strong{color:var(--text-light);}
 .req-list li .ico{flex-shrink:0;font-size:1rem;margin-top:0.1rem;}
 .req-warning{margin-top:1.5rem;padding:1rem 1.2rem;background:rgba(200,0,0,0.06);border:1px solid rgba(200,0,0,0.3);border-left:3px solid #ff0000;font-family:'Cinzel',serif;font-size:0.62rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#ff5555;clip-path:polygon(0 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%);}
-.req-provides{margin-top:1.5rem;padding:1.5rem;background:rgba(255,122,0,0.05);border:1px solid rgba(255,122,0,0.15);border-left:3px solid var(--fire-2);}
+.req-provides{margin-top:1.5rem;padding:1.5rem;background:rgba(0,140,255,0.05);border:1px solid rgba(0,140,255,0.15);border-left:3px solid var(--fire-2);}
 .req-provides-title{font-family:'Cinzel',serif;font-size:0.62rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--fire-2);margin-bottom:0.7rem;}
-.req-provides-list{font-size:0.8rem;color:rgba(255,240,212,0.65);line-height:1.9;}
+.req-provides-list{font-size:0.8rem;color:rgba(237,246,255,0.65);line-height:1.9;}
 .apply-section{padding:9rem 0;text-align:center;position:relative;overflow:hidden;}
-.apply-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(255,50,0,0.1),transparent 70%);}
+.apply-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(0,70,220,0.1),transparent 70%);}
 .manifesto-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;margin-bottom:5rem;}
-.manifesto-card{padding:2.5rem 2rem;border:1px solid var(--border-hot);background:rgba(255,50,0,0.04);clip-path:polygon(0 0,calc(100% - 15px) 0,100% 15px,100% 100%,15px 100%,0 calc(100% - 15px));position:relative;overflow:hidden;opacity:0;transform:translateY(30px);transition:opacity 0.6s ease,transform 0.6s ease,background 0.3s,box-shadow 0.3s;}
+.manifesto-card{padding:2.5rem 2rem;border:1px solid var(--border-hot);background:rgba(0,70,220,0.04);clip-path:polygon(0 0,calc(100% - 15px) 0,100% 15px,100% 100%,15px 100%,0 calc(100% - 15px));position:relative;overflow:hidden;opacity:0;transform:translateY(30px);transition:opacity 0.6s ease,transform 0.6s ease,background 0.3s,box-shadow 0.3s;}
 .manifesto-card.vis{opacity:1;transform:translateY(0);}
-.manifesto-card:hover{background:rgba(255,50,0,0.09);box-shadow:0 0 50px rgba(255,50,0,0.18);}
+.manifesto-card:hover{background:rgba(0,70,220,0.09);box-shadow:0 0 50px rgba(0,70,220,0.18);}
 .manifesto-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--fire-4),transparent);transform:scaleX(0);transition:transform 0.4s;}
 .manifesto-card:hover::before{transform:scaleX(1);}
-.manifesto-card p{font-family:'Cinzel',serif;font-size:0.85rem;font-weight:600;color:rgba(255,240,212,0.8);line-height:1.75;letter-spacing:0.04em;}
+.manifesto-card p{font-family:'Cinzel',serif;font-size:0.85rem;font-weight:600;color:rgba(237,246,255,0.8);line-height:1.75;letter-spacing:0.04em;}
 .manifesto-card p strong{color:var(--fire-2);}
-.cta-title{font-family:'Cinzel Decorative',serif;font-size:clamp(2.2rem,5.5vw,4rem);font-weight:900;background:linear-gradient(135deg,var(--fire-0),var(--fire-1),var(--fire-3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:1rem;filter:drop-shadow(0 0 35px rgba(255,50,0,0.35));position:relative;z-index:2;}
+.cta-title{font-family:'Cinzel Decorative',serif;font-size:clamp(2.2rem,5.5vw,4rem);font-weight:900;background:linear-gradient(135deg,var(--fire-0),var(--fire-1),var(--fire-3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:1rem;filter:drop-shadow(0 0 35px rgba(0,70,220,0.35));position:relative;z-index:2;}
 .cta-sub{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-mid);margin-bottom:2.5rem;position:relative;z-index:2;}
 .contact-section{margin-top:3.5rem;position:relative;z-index:2;}
 .contact-grid{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;}
-.contact-card{display:flex;align-items:center;gap:1rem;padding:1.1rem 1.6rem;background:rgba(255,50,0,0.05);border:1px solid var(--border-hot);clip-path:polygon(9px 0%,100% 0%,calc(100% - 9px) 100%,0% 100%);min-width:220px;cursor:none;transition:all 0.3s;text-align:left;}
-.contact-card:hover{background:rgba(255,50,0,0.12);border-color:rgba(255,122,0,0.45);box-shadow:0 0 30px rgba(255,50,0,0.25);transform:translateY(-3px);}
-.contact-avatar{width:44px;height:44px;border-radius:50%;border:2px solid var(--fire-3);display:flex;align-items:center;justify-content:center;font-size:1.35rem;flex-shrink:0;box-shadow:0 0 15px rgba(255,100,0,0.35);}
+.contact-card{display:flex;align-items:center;gap:1rem;padding:1.1rem 1.6rem;background:rgba(0,70,220,0.05);border:1px solid var(--border-hot);clip-path:polygon(9px 0%,100% 0%,calc(100% - 9px) 100%,0% 100%);min-width:220px;cursor:none;transition:all 0.3s;text-align:left;}
+.contact-card:hover{background:rgba(0,70,220,0.12);border-color:rgba(0,140,255,0.45);box-shadow:0 0 30px rgba(0,70,220,0.25);transform:translateY(-3px);}
+.contact-avatar{width:44px;height:44px;border-radius:50%;border:2px solid var(--fire-3);display:flex;align-items:center;justify-content:center;font-size:1.35rem;flex-shrink:0;box-shadow:0 0 15px rgba(0,160,255,0.35);}
 .c-role{font-family:'Cinzel',serif;font-size:0.48rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--fire-2);margin-bottom:0.28rem;}
 .c-name{font-family:'Cinzel',serif;font-size:0.8rem;font-weight:600;color:var(--text-light);}
 .contact-note{margin-top:1.5rem;font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.18em;color:var(--text-dim);}
@@ -559,7 +559,7 @@ footer{position:relative;z-index:2;padding:3.5rem 0;border-top:1px solid var(--b
 .footer-logo{font-family:'Cinzel Decorative',serif;font-size:1.6rem;font-weight:700;background:linear-gradient(90deg,var(--fire-4),var(--fire-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:0.8rem;}
 footer p{font-size:0.68rem;color:var(--text-dim);letter-spacing:0.12em;}
 footer p+p{margin-top:0.4rem;font-size:0.58rem;opacity:0.4;}
-#toast{position:fixed;bottom:2rem;right:2rem;z-index:99999;font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.14em;padding:1rem 1.6rem;background:rgba(7,2,0,0.97);border:1px solid var(--fire-2);color:var(--fire-2);clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);transform:translateY(80px);opacity:0;transition:all 0.4s ease;box-shadow:0 0 30px rgba(255,179,0,0.25);}
+#toast{position:fixed;bottom:2rem;right:2rem;z-index:99999;font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:0.14em;padding:1rem 1.6rem;background:rgba(7,2,0,0.97);border:1px solid var(--fire-2);color:var(--fire-2);clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);transform:translateY(80px);opacity:0;transition:all 0.4s ease;box-shadow:0 0 30px rgba(0,190,255,0.25);}
 ::-webkit-scrollbar{width:5px;}
 ::-webkit-scrollbar-track{background:var(--ash);}
 ::-webkit-scrollbar-thumb{background:linear-gradient(var(--fire-4),var(--fire-2));border-radius:3px;}
@@ -599,7 +599,7 @@ footer p+p{margin-top:0.4rem;font-size:0.58rem;opacity:0.4;}
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#accolades">Accolades</a></li>
     <li><a href="#requirements">Requirements</a></li>
-    <li><a href="#apply">Apply</a></li>
+    <li><a href="https://discord.gg/FaJcvBav9Q" target="_blank" rel="noopener noreferrer">Apply</a></li>
   </ul>
   <a href="guild/index.html" class="nav-cta"><span>🔥 Guild Tab</span></a>
 </nav>
@@ -619,27 +619,27 @@ footer p+p{margin-top:0.4rem;font-size:0.58rem;opacity:0.4;}
       <path d="M415,85 Q400,50 390,30 Q405,55 420,75 Z"/><path d="M455,80 Q450,40 460,20 Q460,50 465,70 Z"/>
       <path d="M420,250 Q300,180 200,120 Q250,160 280,220 Q320,250 370,260 Z"/>
       <path d="M480,250 Q600,180 700,120 Q650,160 620,220 Q580,250 530,260 Z"/>
-      <path d="M420,250 Q290,200 220,150 Q280,210 340,255 Z" fill="rgba(255,50,0,0.5)"/>
-      <path d="M480,250 Q610,200 680,150 Q620,210 560,255 Z" fill="rgba(255,50,0,0.5)"/>
+      <path d="M420,250 Q290,200 220,150 Q280,210 340,255 Z" fill="rgba(0,70,220,0.5)"/>
+      <path d="M480,250 Q610,200 680,150 Q620,210 560,255 Z" fill="rgba(0,70,220,0.5)"/>
     </svg>
   </div>
   <div style="position:relative;z-index:3;margin-bottom:2rem;">
-    <img src="images/fyrelogo.png" width="240px" alt="fyre_family">
+    <img src="images/FYR3-hero.png" width="240px" alt="FYR3 Hero Crest">
   </div>
   <div class="hero-season-badge" style="position:relative;z-index:3;">
-    <div class="season-dot"></div>World Zero · Season 21 · Recruiting Now<div class="season-dot"></div>
+    <div class="season-dot"></div>World Zero · Recruiting Now<div class="season-dot"></div>
   </div>
   <h1 class="hero-title">FYR3</h1>
   <p class="hero-sub">Top-Tier · Competitive · Structured · Results-Driven</p>
   <div class="hero-badges">
-    <span class="badge b-gold">🔥 Guild Rank #4</span>
-    <span class="badge b-red">⚔️ 2 Consecutive Seasons</span>
-    <span class="badge b-white">🏆 Season 21 Active</span>
+    <span class="badge b-gold">🔥 Guild Rank #8</span>
+    
+    <span class="badge b-white">🏆 Season 22 Active</span>
     <span class="badge b-gold">🌍 Multi-Cultural</span>
     <span class="badge b-red">18+ Only</span>
   </div>
   <div class="hero-ctas">
-    <a href="#apply" class="btn-primary"><span>🔥 Apply to FYR3</span></a>
+    <a href="https://discord.gg/FaJcvBav9Q" target="_blank" rel="noopener noreferrer" class="btn-primary"><span>🔥 Apply to FYR3</span></a>
     <a href="#mission" class="btn-secondary">Learn More</a>
   </div>
   <div class="scroll-cue">
@@ -650,12 +650,12 @@ footer p+p{margin-top:0.4rem;font-size:0.58rem;opacity:0.4;}
 <div class="fire-divider"></div>
 <div class="stats-strip">
   <div class="stats-inner">
-    <div class="stat-block" data-animate><div class="stat-num">#4</div><div class="stat-label">FYR3 Guild Rank</div></div>
-    <div class="stat-block" data-animate><div class="stat-num">2</div><div class="stat-label">Consecutive Seasons</div></div>
-    <div class="stat-block" data-animate><div class="stat-num">#26</div><div class="stat-label">FR4Y & Climbing</div></div>
-    <div class="stat-block" data-animate><div class="stat-num">300+</div><div class="stat-label">FR4Y Daily Pts Min</div></div>
+    <div class="stat-block" data-animate><div class="stat-num">#8</div><div class="stat-label">FYR3 Guild Rank</div></div>
+    
+    
+    
     <div class="stat-block" data-animate><div class="stat-num">18+</div><div class="stat-label">Age Requirement</div></div>
-    <div class="stat-block" data-animate><div class="stat-num">Lv.150</div><div class="stat-label">Minimum Level</div></div>
+    <div class="stat-block" data-animate><div class="stat-num">Lv.175</div><div class="stat-label">Minimum Level</div></div>
   </div>
 </div>
 <div class="fire-divider"></div>
@@ -668,8 +668,8 @@ footer p+p{margin-top:0.4rem;font-size:0.58rem;opacity:0.4;}
         <h2 class="sec-title">Who We Are</h2>
         <div class="divider"></div>
         <p>FYR3 is not casual. We are not average. We are a <strong>performance-based guild built to compete at the top</strong> — and we've proven it season after season.</p>
-        <p>FR4Y is our semi-competitive proving ground — a pipeline that <strong>aims for excellence</strong> while developing the next wave of FYR3 members. Every FR4Y spot is a stepping stone to the elite.</p>
-        <p>Every roster spot in both guilds is earned and maintained. <strong>Outstanding performance is recognized, rewarded, and remembered.</strong> Underperformance has consequences.</p>
+        <p>1C3 is our semi-competitive proving ground — a pipeline that <strong>aims for excellence</strong> while developing the next wave of FYR3 members. Every 1C3 spot is a stepping stone to the elite.</p>
+        <p>Every roster spot in both guilds is earned and maintained. <strong>Outstanding performance is recognized, rewarded, and remembered.</strong></p>
         <p>We are a multi-cultural guild with diverse leadership and language support. One standard. One goal. <strong>Shared excellence regardless of background.</strong></p>
         <p class="mission-quote">"If you're here, you are expected to contribute — daily."</p>
       </div>
@@ -677,19 +677,19 @@ footer p+p{margin-top:0.4rem;font-size:0.58rem;opacity:0.4;}
         <div class="mission-card" data-animate>
           <div class="mc-tag">🔥 Primary Guild</div>
           <div class="mc-name">FYR3</div>
-          <div class="mc-desc">Hold <strong>#4 — no regression.</strong> High-output daily performance is the baseline, not the goal.</div>
-          <div class="rank-badge">🏆 #4</div>
+          <div class="mc-desc">Hold <strong>#8 — no regression.</strong> High-output daily performance is the baseline, not the goal.</div>
+          <div class="rank-badge">🏆 #8</div>
         </div>
         <div class="mission-card" data-animate style="transition-delay:0.15s;border-left-color:var(--fire-2);">
           <div class="mc-tag">⚡ Waiting List Guild</div>
-          <div class="mc-name">FR4Y</div>
-          <div class="mc-desc">Hold <strong>Tier 6</strong> and push for top 10. 300+ daily points minimum. Your launchpad to FYR3.</div>
-          <div class="rank-badge">🏆 #26</div>
+          <div class="mc-name">1C3</div>
+          <div class="mc-desc">Maiden Season goal: <strong>Top 25</strong>. Hold Tier 6, build consistency, and grow toward FYR3.</div>
+          <div class="rank-badge">🏆 Maiden Season · Top 25 Goal</div>
         </div>
         <div class="mission-card" data-animate style="transition-delay:0.3s;border-left-color:rgba(160,196,255,0.6);">
           <div class="mc-tag">🌍 Culture</div>
           <div class="mc-name">Diverse & Unified</div>
-          <div class="mc-desc">Multi-cultural leadership. Language-diverse communication. One fire. One family. One goal.</div>
+          <div class="mc-desc">Multi-cultural & Language-diverse community. One FYR3. One family. One goal.</div>
         </div>
       </div>
     </div>
@@ -712,57 +712,16 @@ footer p+p{margin-top:0.4rem;font-size:0.58rem;opacity:0.4;}
         <div class="lead-handle">@N2th3fray</div>
         <ul class="lead-duties"><li>Manages all aspects of FYR3 Guilds</li><li>Handles complaints, issues & escalations</li><li>Final authority on all guild decisions</li></ul>
       </div>
-      <div class="lead-card" data-animate style="transition-delay:0.08s;">
-                <div class="lead-role-badge role-colead">⚔️ Co-Leader · Recruitment & Strategy Manager</div>
-        <div class="lead-name">P3pp3R</div><div class="lead-handle">@P3pp3R</div>
-                <ul class="lead-duties"><li>Participates in decision-making</li><li>Oversees recruitment & strategy implementation</li><li>Manages "Strike a Pose" contests</li></ul>
-      </div>
       <div class="lead-card" data-animate style="transition-delay:0.16s;">
-                <div class="lead-role-badge role-colead">🛡️ Co-Leader · Leadership Support Manager</div>
+                <div class="lead-role-badge role-colead">👑 Guild Leader</div>
         <div class="lead-name">goofygoof35_97</div><div class="lead-handle">@goofygoof35_97</div>
-                <ul class="lead-duties"><li>Participates in decision-making</li><li>Handles complaints & issue resolution</li><li>Oversees giveaways, seasonal contests & raffles</li></ul>
-      </div>
-      <div class="lead-card" data-animate style="transition-delay:0.24s;">
-        <div class="lead-role-badge role-manager">🔧 Technical Manager</div>
-        <div class="lead-name">Whiffy</div><div class="lead-handle">@technical#manager</div>
-        <ul class="lead-duties"><li>Primary contact for server-related issues</li><li>Maintains server infrastructure</li></ul>
-      </div>
-      <div class="lead-card" data-animate style="transition-delay:0.32s;">
-        <div class="lead-role-badge role-captain">⭐ Team Captain Lead</div>
-        <div class="lead-name">Plague</div><div class="lead-handle">Team Captain Lead</div>
-        <ul class="lead-duties"><li>Primary liaison between captains & leadership</li><li>Directs members to appropriate contacts</li><li>Identifies & advises on captain promotions</li></ul>
-      </div>
-      <div class="lead-card" data-animate style="transition-delay:0.40s;border-color:rgba(127,255,176,0.15);">
-        <div class="lead-role-badge role-specialist">⚒️ The Forge</div>
-        <div class="lead-name">Chernobylican</div><div class="lead-handle">Class & Build Expert</div>
-        <ul class="lead-duties"><li>Assists members with class & build information</li><li>Optimizes loadouts for top performance</li></ul>
-      </div>
-      <div class="lead-card" data-animate style="transition-delay:0.48s;border-color:rgba(160,160,255,0.15);">
-        <div class="lead-role-badge role-manager" style="color:#c4b5ff;">🎨 Designer</div>
-        <div class="lead-name">Rousei</div><div class="lead-handle">Visual & Server Design</div>
-        <ul class="lead-duties"><li>Designs & enhances server visuals</li><li>Maintains guild brand identity</li></ul>
+                <ul class="lead-duties"><li>Manages all aspects of FYR3 Guilds</li><li>Handles complaints, issues & escalations</li><li>Final authority on all guild decisions</li></ul>
       </div>
       <div class="lead-card" data-animate style="transition-delay:0.56s;border-color:rgba(185,159,255,0.2);">
         <div class="lead-role-badge role-advisor">🔮 Guild Advisor</div>
         <div class="lead-name">GalaxyNoob</div><div class="lead-handle">Guild Strategy Advisor</div>
         <ul class="lead-duties"><li>Collaborates on strategy development</li><li>Assists with contest planning & ideas</li><li>Tracks & analyzes guild points & performance</li><li>Supports teamwork initiatives</li></ul>
       </div>
-      <div class="lead-card captains" data-animate style="transition-delay:0.64s;">
-        <div class="lead-role-badge role-captain">🔥 Team Captains</div>
-        <div class="lead-name" style="margin-bottom:0.3rem;">The Captain Corps</div>
-        <div class="lead-handle" style="margin-bottom:1rem;">Forming parties · IT runs · Event hosting</div>
-        <div class="captains-inner">
-          <div class="captain-chip">⚔️ Shiluro</div>
-          <div class="captain-chip">⚔️ woc</div>
-          <div class="captain-chip">⚔️ DONEbyMADDIE</div>
-          <div class="captain-chip">⚔️ TerraTails</div>
-          <div class="captain-chip">⚔️ dylan death</div>
-        </div>
-        <ul class="lead-duties" style="margin-top:1rem;">
-          <li>Assists members in forming parties when needed</li>
-          <li>Supports Infinite Tower runs</li>
-          <li>Hosts and organizes event parties</li>
-        </ul>
       </div>
     </div>
   </div>
@@ -789,14 +748,14 @@ footer p+p{margin-top:0.4rem;font-size:0.58rem;opacity:0.4;}
         <img id="heroImg" src="images/guild_hall_4.png" alt="FYR3 Guild Assembly">
       </div>
       <div class="gallery-corner-badge">
-        <div class="gallery-badge-rank">🏆 #4</div>
+        <div class="gallery-badge-rank">🏆 #8</div>
         <div class="gallery-badge-season">Season 21</div>
       </div>
       <div class="gallery-hero-overlay">
         <div class="gallery-hero-meta">
           <div class="gallery-hero-tag"><span>🔥</span> Guild Hall · Season 21</div>
           <div class="gallery-hero-title" id="heroTitle">The Grand Assembly</div>
-          <div class="gallery-hero-desc" id="heroDesc">FYR3's full roster gathered in the Guild Hall — the champions who secured Rank #4 for two consecutive seasons. Every member a warrior, every season a victory.</div>
+          <div class="gallery-hero-desc" id="heroDesc">FYR3's full roster gathered in the Guild Hall — the champions who secured Rank #8 for two consecutive seasons. Every member a warrior, every season a victory.</div>
         </div>
         <div class="gallery-members-featured" id="heroMembers">
           <span class="member-chip chip-gold">👑 N2Th3Fray</span>
@@ -818,7 +777,7 @@ footer p+p{margin-top:0.4rem;font-size:0.58rem;opacity:0.4;}
       <div class="gallery-thumb" onclick="setHero(1); openFS(1)">
         <img src="images/guild_hall_1.png" alt="FYR3 Guild Hall Victory">
         <div class="gallery-thumb-content">
-          <div class="thumb-label">🔥 Season 21 · Rank #4</div>
+          <div class="thumb-label">🔥 Season 21 · Rank #8</div>
           <div class="thumb-title">Victory Formation</div>
           <div class="thumb-members">
             <span class="thumb-member">Shiluro</span>
@@ -831,9 +790,9 @@ footer p+p{margin-top:0.4rem;font-size:0.58rem;opacity:0.4;}
         </div>
       </div>
       <div class="gallery-thumb" onclick="setHero(2); openFS(2)">
-        <img src="images/guild_hall_2.png" alt="FYR3 Season 20 #4 Guild">
+        <img src="images/guild_hall_2.png" alt="FYR3 Season 20 #8 Guild">
         <div class="gallery-thumb-content">
-          <div class="thumb-label">🏆 Season 20 · #4 Guild</div>
+          <div class="thumb-label">🏆 Season 20 · #8 Guild</div>
           <div class="thumb-title">Season 20 Champions</div>
           <div class="thumb-members">
             <span class="thumb-member">Kazuma2609</span>
@@ -878,11 +837,11 @@ footer p+p{margin-top:0.4rem;font-size:0.58rem;opacity:0.4;}
         <div class="g-stat-label">Members Featured</div>
       </div>
       <div class="g-stat">
-        <div class="g-stat-num">2×</div>
+        <div class="g-stat-num">4</div>
         <div class="g-stat-label">Seasons Documented</div>
       </div>
       <div class="g-stat">
-        <div class="g-stat-num">#4</div>
+        <div class="g-stat-num">#8</div>
         <div class="g-stat-label">Rank Held</div>
       </div>
     </div>
@@ -899,12 +858,12 @@ footer p+p{margin-top:0.4rem;font-size:0.58rem;opacity:0.4;}
       <p style="color:var(--text-mid);font-size:0.85rem;">Not claims. Not promises. Results.</p>
     </div>
     <div class="acc-grid">
-      <div class="acc-card" data-animate><span class="acc-icon">🏆</span><div class="acc-title">Back-to-Back #4</div><div class="acc-desc">Two consecutive seasons holding Guild Rank #4 on the World Zero leaderboard. Consistency is our standard.</div></div>
-      <div class="acc-card" data-animate style="transition-delay:0.1s"><span class="acc-icon">📈</span><div class="acc-title">FR4Y Rising</div><div class="acc-desc">FR4Y climbed to #26 and is still pushing. A pipeline that delivers, not just trains.</div></div>
+      <div class="acc-card" data-animate><span class="acc-icon">🏆</span><div class="acc-title">Back-to-Back #8</div><div class="acc-desc">Two consecutive seasons holding Guild Rank #8 on the World Zero leaderboard. Consistency is our standard.</div></div>
+      <div class="acc-card" data-animate style="transition-delay:0.1s"><span class="acc-icon">📈</span><div class="acc-title">1C3 Growth</div><div class="acc-desc">A pipeline that develops members, builds experience, and prepares the next wave of FYR3 talent.</div></div>
       <div class="acc-card" data-animate style="transition-delay:0.2s"><span class="acc-icon">⚔️</span><div class="acc-title">Structured Leadership</div><div class="acc-desc">Defined roles, clear hierarchy — Leader, Co-Leaders, Advisors, rank tiers. No guesswork, only strategy.</div></div>
       <div class="acc-card" data-animate style="transition-delay:0.3s"><span class="acc-icon">🌍</span><div class="acc-title">Multi-Cultural Guild</div><div class="acc-desc">Diverse language communication across the globe. One fire united across every timezone and background.</div></div>
       <div class="acc-card" data-animate style="transition-delay:0.4s"><span class="acc-icon">🎯</span><div class="acc-title">Merit-Based System</div><div class="acc-desc">Every rank earned, every reward deserved. Hard work is seen, tracked, and recognized by leadership.</div></div>
-      <div class="acc-card" data-animate style="transition-delay:0.5s"><span class="acc-icon">🔗</span><div class="acc-title">FR4Y → FYR3 Pipeline</div><div class="acc-desc">Proven growth path from semi-competitive to elite. FR4Y is your launchpad. FYR3 is the destination.</div></div>
+      <div class="acc-card" data-animate style="transition-delay:0.5s"><span class="acc-icon">🔗</span><div class="acc-title">1C3 → FYR3 Pipeline</div><div class="acc-desc">Proven growth path from semi-competitive to elite. 1C3 is your launchpad. FYR3 is the destination.</div></div>
     </div>
   </div>
 </section>
@@ -923,7 +882,7 @@ footer p+p{margin-top:0.4rem;font-size:0.58rem;opacity:0.4;}
         <ul class="req-list">
           <li data-animate><span class="ico">⚔️</span><span><strong>High-output daily performance</strong> expected. More info disclosed during interview.</span></li>
           <li data-animate style="transition-delay:0.07s"><span class="ico">🔞</span><span><strong>18+ ONLY</strong> — No exceptions, ever.</span></li>
-          <li data-animate style="transition-delay:0.14s"><span class="ico">🎮</span><span><strong>Level 150+</strong> in World Zero.</span></li>
+          <li data-animate style="transition-delay:0.14s"><span class="ico">🎮</span><span><strong>Level 175+</strong> in World Zero.</span></li>
           <li data-animate style="transition-delay:0.21s"><span class="ico">📅</span><span><strong>Daily participation</strong> — no gaps, no excuses.</span></li>
           <li data-animate style="transition-delay:0.28s"><span class="ico">💬</span><span>Active in <strong>Discord & team coordination</strong> at all times.</span></li>
           <li data-animate style="transition-delay:0.35s"><span class="ico">🗣️</span><span><strong>Strong communication skills</strong> are non-negotiable.</span></li>
@@ -933,11 +892,11 @@ footer p+p{margin-top:0.4rem;font-size:0.58rem;opacity:0.4;}
         <div class="req-warning">⛔ Exploiters Not Welcome · No Drama · No Toxicity</div>
       </div>
       <div class="req-col">
-        <div class="req-col-title"><span>⚡</span><span style="background:linear-gradient(135deg,var(--fire-1),var(--fire-0));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">FR4Y — Rising Stars</span></div>
+        <div class="req-col-title"><span>⚡</span><span style="background:linear-gradient(135deg,var(--fire-1),var(--fire-0));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">1C3 — Rising Stars</span></div>
         <ul class="req-list">
           <li data-animate style="transition-delay:0.1s"><span class="ico">🎯</span><span><strong>300+ daily points</strong> minimum — aim higher, always.</span></li>
           <li data-animate style="transition-delay:0.17s"><span class="ico">🔞</span><span><strong>18+ ONLY</strong> — Same standard applies.</span></li>
-          <li data-animate style="transition-delay:0.24s"><span class="ico">🎮</span><span><strong>Level 150+</strong> in World Zero.</span></li>
+          <li data-animate style="transition-delay:0.24s"><span class="ico">🎮</span><span><strong>Level 175+</strong> in World Zero.</span></li>
           <li data-animate style="transition-delay:0.31s"><span class="ico">📅</span><span><strong>Daily participation</strong> — consistency is everything.</span></li>
           <li data-animate style="transition-delay:0.38s"><span class="ico">💬</span><span>Active in <strong>Discord & guild events</strong>.</span></li>
           <li data-animate style="transition-delay:0.45s"><span class="ico">📊</span><span>Demonstrate consistent growth and <strong>improve week over week</strong>.</span></li>
@@ -946,7 +905,7 @@ footer p+p{margin-top:0.4rem;font-size:0.58rem;opacity:0.4;}
         <div class="req-provides">
           <div class="req-provides-title">What We Provide</div>
           <div class="req-provides-list">
-            ✦ Transparent expectations<br>✦ Proven, experienced leadership<br>✦ Clear structure, strategy & accountability<br>✦ Active VC, events & community support<br>✦ Hard work appreciation & rewards<br>✦ Growth pipeline from FR4Y → FYR3
+            ✦ Transparent expectations<br>✦ Proven, experienced leadership<br>✦ Clear structure, strategy & accountability<br>✦ Active VC, events & community support<br>✦ Hard work appreciation & rewards<br>✦ Growth pipeline from 1C3 → FYR3
           </div>
         </div>
       </div>
@@ -967,8 +926,8 @@ footer p+p{margin-top:0.4rem;font-size:0.58rem;opacity:0.4;}
     <div class="cta-title">Ready to Burn?</div>
     <p class="cta-sub">Season 21 · Recruitment Open · Apply Now</p>
     <div style="display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1rem;position:relative;z-index:2;">
-      <a href="#" class="btn-primary" onclick="flashContacts(event)"><span>🔥 Apply for FYR3</span></a>
-      <a href="#" class="btn-secondary" onclick="flashContacts(event)">⚡ Apply for FR4Y</a>
+      <a href="https://discord.gg/FaJcvBav9Q" target="_blank" rel="noopener noreferrer" class="btn-primary"><span>🔥 Apply for FYR3</span></a>
+      <a href="https://discord.gg/FaJcvBav9Q" target="_blank" rel="noopener noreferrer" class="btn-secondary">⚡ Apply for 1C3</a>
     </div>
     <div class="contact-section">
       <div style="font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-dim);margin-bottom:1.5rem;">Contact Leadership on Discord</div>
@@ -1003,7 +962,7 @@ const GALLERY_DATA = [
     img:'images/guild_hall_4.png',
     tag:'🔥 Grand Assembly · All Members',
     title:'The Grand Assembly',
-    desc:'FYR3\'s full roster gathered in the Guild Hall — the champions who secured Rank #4 for two consecutive seasons. Every member a warrior, every season a victory.',
+    desc:'FYR3\'s full roster gathered in the Guild Hall — the champions who secured Rank #8 for two consecutive seasons. Every member a warrior, every season a victory.',
     members:[
       {n:'👑 N2Th3Fray',c:'chip-gold'},{n:'🛡️ P3pp3r',c:'chip-fire'},{n:'⚔️ goofygoof35_97',c:'chip-fire'},
       {n:'🔥 Plague',c:'chip-fire'},{n:'⚔️ Shiluro',c:'chip-green'},{n:'⚡ aus',c:'chip-blue'},
@@ -1024,9 +983,9 @@ const GALLERY_DATA = [
   },
   {
     img:'images/guild_hall_2.png',
-    tag:'🥇 Season 20 · #4 Guild Badge',
+    tag:'🥇 Season 20 · #8 Guild Badge',
     title:'Season 20 Champions',
-    desc:'The Season 20 #4 Guild badge glowing above our champions. The roots of FYR3\'s legacy — where the back-to-back reign began. Legends in the making.',
+    desc:'The Season 20 #8 Guild badge glowing above our champions. The roots of FYR3\'s legacy — where the back-to-back reign began. Legends in the making.',
     members:[
       {n:'⚔️ Kazuma2609',c:'chip-blue'},{n:'💀 Deadbun',c:'chip-purple'},{n:'👹 Imperfektion',c:'chip-fire'},
       {n:'⚡ Terratails',c:'chip-fire'},{n:'🐸 Floppy',c:'chip-green'},{n:'⚔️ Dark Knight000',c:'chip-fire'},
@@ -1037,7 +996,7 @@ const GALLERY_DATA = [
     img:'images/guild_hall_3.png',
     tag:'🌍 Full Roster · Season 21',
     title:'The Full Fire',
-    desc:'Every fire has its source. Every warrior has their place. This is FYR3 in full force — united, fierce, and unstoppable. Rank #4 belongs to us.',
+    desc:'Every fire has its source. Every warrior has their place. This is FYR3 in full force — united, fierce, and unstoppable. Rank #8 belongs to us.',
     members:[
       {n:'🐎 Mr Speedy',c:'chip-blue'},{n:'✦ Brieanne',c:'chip-blue'},{n:'🎪 Pinata',c:'chip-purple'},
       {n:'⚔️ Lenarch',c:'chip-fire'},{n:'🎨 Diogoart',c:'chip-green'},{n:'⚔️ Floppy',c:'chip-green'},
@@ -1188,7 +1147,7 @@ function flashContacts(e){
   document.getElementById('apply').scrollIntoView({behavior:'smooth'});
   setTimeout(()=>{
     document.querySelectorAll('.contact-card').forEach((c,i)=>{
-      setTimeout(()=>{c.style.boxShadow='0 0 40px rgba(255,179,0,0.6)';c.style.borderColor='var(--fire-2)';
+      setTimeout(()=>{c.style.boxShadow='0 0 40px rgba(0,190,255,0.6)';c.style.borderColor='var(--fire-2)';
         setTimeout(()=>{c.style.boxShadow='';c.style.borderColor='';},900);},i*180);
     });
   },700);
@@ -1196,7 +1155,7 @@ function flashContacts(e){
 document.querySelectorAll('.lead-card,.acc-card,.manifesto-card').forEach(card=>{
   card.addEventListener('mousemove',e=>{
     const r=card.getBoundingClientRect();
-    card.style.background=`radial-gradient(circle at ${((e.clientX-r.left)/r.width)*100}% ${((e.clientY-r.top)/r.height)*100}%, rgba(255,60,0,0.13), rgba(255,50,0,0.04))`;
+    card.style.background=`radial-gradient(circle at ${((e.clientX-r.left)/r.width)*100}% ${((e.clientY-r.top)/r.height)*100}%, rgba(0,100,240,0.13), rgba(0,70,220,0.04))`;
   });
   card.addEventListener('mouseleave',()=>{card.style.background='';});
 });
