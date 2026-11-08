@@ -538,6 +538,10 @@ section{position:relative;z-index:2;}
 .apply-section{padding:9rem 0;text-align:center;position:relative;overflow:hidden;}
 .apply-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(0,70,220,0.1),transparent 70%);}
 .manifesto-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;margin-bottom:5rem;}
+.manifesto-grid.manifesto-single{grid-template-columns:1fr;max-width:100%;margin:0 auto 5rem;}
+.manifesto-card.manifesto-featured{padding:3.5rem 3rem;border:1px solid rgba(255,190,0,0.65);background:linear-gradient(120deg,rgba(0,70,220,0.12),rgba(255,170,0,0.08),rgba(0,70,220,0.12));box-shadow:0 0 30px rgba(255,190,0,0.08),inset 0 0 35px rgba(0,70,220,0.08);}
+.manifesto-card.manifesto-featured p{font-size:clamp(1rem,2vw,1.2rem);letter-spacing:0.08em;text-align:center;}
+.manifesto-card.manifesto-featured::before{height:3px;transform:scaleX(1);background:linear-gradient(90deg,transparent,var(--fire-4),var(--fire-2),var(--fire-4),transparent);}
 .manifesto-card{padding:2.5rem 2rem;border:1px solid var(--border-hot);background:rgba(0,70,220,0.04);clip-path:polygon(0 0,calc(100% - 15px) 0,100% 15px,100% 100%,15px 100%,0 calc(100% - 15px));position:relative;overflow:hidden;opacity:0;transform:translateY(30px);transition:opacity 0.6s ease,transform 0.6s ease,background 0.3s,box-shadow 0.3s;}
 .manifesto-card.vis{opacity:1;transform:translateY(0);}
 .manifesto-card:hover{background:rgba(0,70,220,0.09);box-shadow:0 0 50px rgba(0,70,220,0.18);}
@@ -916,8 +920,8 @@ footer p+p{margin-top:0.4rem;font-size:0.58rem;opacity:0.4;}
 <section class="apply-section" id="apply">
   <div class="apply-bg"></div>
   <div class="inner" style="position:relative;z-index:2;">
-    <div class="manifesto-grid">
-      <div class="manifesto-card" data-animate><p>🔥 If you want to <strong>compete at a high level</strong> — this is your shot.</p></div>
+    <div class="manifesto-grid manifesto-single">
+      <div class="manifesto-card manifesto-featured" data-animate><p>🔥 If you want to <strong>compete at a high level</strong> — this is your shot.</p></div>
     </div>
     <div style="width:200px;height:3px;margin:0 auto 3rem;background:linear-gradient(90deg,transparent,var(--fire-4),var(--fire-2),var(--fire-4),transparent);background-size:200% 100%;animation:fireSlide 3s linear infinite;"></div>
     <div class="cta-title">Ready to Burn?</div>
